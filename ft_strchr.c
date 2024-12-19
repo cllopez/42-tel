@@ -6,7 +6,7 @@
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:54:10 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 13:08:28 by cllopez-         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:18:30 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strchr(const char *s, int c)
 int	main()
 {
 	int c = 'a';
-	char s[] = "hola padre";
+	char s[] = "holara padre";
 
 	printf("%s", ft_strchr(s, c));
 } */

@@ -27,7 +27,8 @@ FILES = ft_atoi.c \
 		ft_isascii.c \
 		ft_memcpy.c \
 		ft_strlcat.c \
-		ft_strrchr.c
+		ft_strrchr.c \
+		ft_strtrim.c
 
 
 OBJS = $(FILES:.c=.o)

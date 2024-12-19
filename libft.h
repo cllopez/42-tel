@@ -6,7 +6,7 @@
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:47:00 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 13:27:54 by cllopez-         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:18:31 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(const char *source, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+char 	*ft_strtrim(char const *s1, char const *set);
 
 #endif
