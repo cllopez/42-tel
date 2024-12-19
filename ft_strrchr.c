@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 11:14:56 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:47:35 by cllopez-         ###   ########.fr       */
+/*   Created: 2024/12/06 12:52:07 by cllopez-          #+#    #+#             */
+/*   Updated: 2024/12/19 13:24:51 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strrchr(const char *s, int c)
 {
+	int		i;
 	char	*str;
 
-	str = (char *)malloc(ft_strlen((char *)s) + 1);
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, s, ft_strlen((char *)s) + 1);
-	return (str);
+	str = (char *)s;
+	i = ft_strlen(str);
+	while (i >= 0)
+	{
+		if (str[i] == (char)c)
+			return (str + i);
+		i--;
+	}
+	return (NULL);
 }
+
+/* int	main()
+{
+	int c = 'a';
+	char s[] = "hola padre";
+
+	printf("%s", ft_strrchr(s, c));
+} */

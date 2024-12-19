@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 11:14:56 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:47:35 by cllopez-         ###   ########.fr       */
+/*   Created: 2024/12/12 11:58:57 by cllopez-          #+#    #+#             */
+/*   Updated: 2024/12/19 12:52:42 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*str;
+	size_t		i;
+	char		*destino;
+	const char	*source;
 
-	str = (char *)malloc(ft_strlen((char *)s) + 1);
-	if (!str)
+	source = (const char *)src;
+	destino = (char *)dest;
+	i = 0;
+	if (!dest && !src)
 		return (NULL);
-	ft_strlcpy(str, s, ft_strlen((char *)s) + 1);
-	return (str);
+	while (i < n)
+	{
+		destino[i] = source[i];
+		i++;
+	}
+	return (dest);
 }
+
+/* int main(){
+	char dest[20] = {0};
+	char src[] = "hola mundo";
+
+	printf("%s", (char *)ft_memcpy(dest, src, 4));
+} */

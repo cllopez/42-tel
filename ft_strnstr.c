@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 11:15:40 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:42:00 by cllopez-         ###   ########.fr       */
+/*   Created: 2024/12/11 12:19:10 by cllopez-          #+#    #+#             */
+/*   Updated: 2024/12/19 11:43:15 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *source, unsigned int start, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	char	*res;
-	size_t	srclen;
-	size_t	substrlen;
+	size_t	j;
 
-	if (!source)
+	if (!big && !little)
 		return (NULL);
-	srclen = ft_strlen((char *)source);
-	if (start >= srclen)
-		return (ft_strdup(""));
-	substrlen = srclen - start;
-	if (substrlen > len)
-		substrlen = len;
-	res = (char *)malloc((substrlen + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
+	if (*little == '\0')
+		return ((char *)big);
 	i = 0;
-	while (source[start + i] && i < len)
+	while (big[i] && i < len)
 	{
-		res[i] = source[start + i];
+		j = 0;
+		while ((i + j) < len && big[i + j] == little[j])
+		{
+			if (little[j + 1] == '\0')
+				return ((char *)&big[i]);
+			j++;
+		}
 		i++;
 	}
-	res[i] = '\0';
-	return (res);
+	return (NULL);
 }
+
+/* #include <stdio.h>
+
+int main(){
+	char big[] = "hola, mundo";
+	char little[] = "hola";
+
+	char *res = ft_strnstr(big, little, 0);
+	printf("%s", res);
+} */
