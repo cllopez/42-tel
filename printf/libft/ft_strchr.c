@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 11:57:50 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:55:01 by cllopez-         ###   ########.fr       */
+/*   Created: 2024/12/06 11:54:10 by cllopez-          #+#    #+#             */
+/*   Updated: 2024/12/19 16:18:30 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *c)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }
+/* 
+int	main()
+{
+	int c = 'a';
+	char s[] = "holara padre";
+
+	printf("%s", ft_strchr(s, c));
+} */

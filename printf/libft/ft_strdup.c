@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 11:57:50 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:55:01 by cllopez-         ###   ########.fr       */
+/*   Created: 2024/12/17 11:14:56 by cllopez-          #+#    #+#             */
+/*   Updated: 2024/12/19 11:47:35 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *c)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	char	*str;
 
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
+	str = (char *)malloc(ft_strlen((char *)s) + 1);
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s, ft_strlen((char *)s) + 1);
+	return (str);
 }

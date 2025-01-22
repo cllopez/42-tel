@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 11:57:50 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:55:01 by cllopez-         ###   ########.fr       */
+/*   Created: 2024/12/12 11:58:57 by cllopez-          #+#    #+#             */
+/*   Updated: 2024/12/19 12:52:42 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *c)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	size_t		i;
+	char		*destino;
+	const char	*source;
 
+	source = (const char *)src;
+	destino = (char *)dest;
 	i = 0;
-	while (c[i])
+	if (!dest && !src)
+		return (NULL);
+	while (i < n)
+	{
+		destino[i] = source[i];
 		i++;
-	return (i);
+	}
+	return (dest);
 }
+
+/* int main(){
+	char dest[20] = {0};
+	char src[] = "hola mundo";
+
+	printf("%s", (char *)ft_memcpy(dest, src, 4));
+} */

@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printcaracter.c                                 :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 14:06:08 by cllopez-          #+#    #+#             */
-/*   Updated: 2025/01/15 14:48:29 by cllopez-         ###   ########.fr       */
+/*   Created: 2025/01/02 11:04:08 by cllopez-          #+#    #+#             */
+/*   Updated: 2025/01/02 11:08:20 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "libft.h"
 
-int	ft_character(va_list arg_ptr)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char s;
-
-	s = va_arg(arg_ptr, char);
-	write(1, &s, 1);
-	return(1);
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = -n;
+		}
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
 }

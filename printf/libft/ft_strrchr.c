@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsign.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 15:07:29 by cllopez-          #+#    #+#             */
-/*   Updated: 2025/01/15 15:58:43 by cllopez-         ###   ########.fr       */
+/*   Created: 2024/12/06 12:52:07 by cllopez-          #+#    #+#             */
+/*   Updated: 2024/12/19 13:24:51 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "libft.h"
 
-void	ft_unsign(va_list arg_ptr)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	nb;
+	int		i;
+	char	*str;
 
-	nb = va_arg(arg_ptr, int);
-	if (nb < 0)
-		nb = -nb;
-	if (nb >= 10)
+	str = (char *)s;
+	i = ft_strlen(str);
+	while (i >= 0)
 	{
-		ft_putnbr(nb / 10);
+		if (str[i] == (char)c)
+			return (str + i);
+		i--;
 	}
-	write(1, &"0123456789"[nb % 10], 1);
+	return (NULL);
 }
+
+/* int	main()
+{
+	int c = 'a';
+	char s[] = "hola padre";
+
+	printf("%s", ft_strrchr(s, c));
+} */

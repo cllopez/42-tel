@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_string.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 11:57:50 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:55:01 by cllopez-         ###   ########.fr       */
+/*   Created: 2025/01/15 14:35:06 by cllopez-          #+#    #+#             */
+/*   Updated: 2025/01/22 12:44:41 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlen(const char *c)
+int	ft_string(va_list arg_ptr)
 {
-	size_t	i;
+	char	*s;
 
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
+    s = va_arg(arg_ptr, char *);
+
+	ft_putstr(s);
+	return(ft_strlen(s));
 }

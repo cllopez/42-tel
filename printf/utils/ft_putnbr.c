@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 11:57:50 by cllopez-          #+#    #+#             */
-/*   Updated: 2024/12/19 11:55:01 by cllopez-         ###   ########.fr       */
+/*   Created: 2025/01/15 14:53:02 by cllopez-          #+#    #+#             */
+/*   Updated: 2025/01/22 12:43:42 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlen(const char *c)
+void	ft_putnbr(va_list arg_ptr, int base, char c)
 {
-	size_t	i;
+	int nb;
 
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
+	nb = va_arg(arg_ptr, int);
+	if (c == 'u')
+	{
+		nb = (unsigned int)nb;
+		ft_putnbrbase(nb, base, c);
+	}
+	else
+		ft_putnbrbase(nb, base, c);
 }
