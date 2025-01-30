@@ -6,11 +6,11 @@
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:06:08 by cllopez-          #+#    #+#             */
-/*   Updated: 2025/01/22 12:46:14 by cllopez-         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:48:39 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_character(va_list arg_ptr)
 {

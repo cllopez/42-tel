@@ -6,7 +6,7 @@
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:47:00 by cllopez-          #+#    #+#             */
-/*   Updated: 2025/01/02 11:17:34 by cllopez-         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:53:52 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+int	ft_string(va_list arg_ptr);
 
 #endif

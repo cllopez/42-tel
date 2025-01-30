@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:06:38 by cllopez-          #+#    #+#             */
-/*   Updated: 2025/01/22 11:49:32 by cllopez-         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:55:22 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include "libft/libft.h"
 
-void	ft_putstr(char *s);
 int	ft_character(va_list arg_ptr);
-int	ft_string(va_list arg_ptr);
 size_t	ft_strlen(const char *c);
-void	ft_putnbr(va_list arg_ptr, int base, char c);
-void	ft_unsign(va_list arg_ptr);
+int	ft_putnbr(va_list arg_ptr, int base, char c);
 int	ft_printf(char const *s, ...);
 int	ft_putnbrbase(int nb, int base, char c);
-
+void	ft_putstr_fd(char *s, int fd);
 
 #endif

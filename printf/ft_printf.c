@@ -6,47 +6,58 @@
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:48:56 by cllopez-          #+#    #+#             */
-/*   Updated: 2025/01/22 13:09:35 by cllopez-         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:48:39 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
+
+int	ft_type(char c, va_list arg_ptr)
+{
+	int	total;
+
+	total = 0;
+	if (c == 'c')
+		total += ft_character(arg_ptr);
+	else if (c == 's')
+		total += ft_string(arg_ptr);
+	else if (c == 'd' || c == 'i')
+		total += ft_putnbr(arg_ptr, 10, c);
+	else if (c == 'u')
+		total += ft_putnbr(arg_ptr, 10, c);
+	else if (c == 'x')
+		total += ft_putnbr(arg_ptr, 16, c);
+	else if (c == 'X')
+		total += ft_putnbr(arg_ptr, 16, c);
+	else if (c == '%')
+		total += write(1,"%%", 1);
+	return (total);
+}
 
 int	ft_printf(char const *s, ...)
 {
 	int	i;
+	int total;
 	va_list arg_ptr;
 	va_start(arg_ptr, s);
 
 	i = 0;
+	total = 0;
 	while (s[i])
 	{
 		if (s[i] == '%')
 		{
 			i++;
-			if (s[i] == 'c')
-				ft_character(arg_ptr);
-			else if (s[i] == 's')
-				ft_string(arg_ptr);
-			else if (s[i] == 'd' || s[i] == 'i')
-				ft_putnbr(arg_ptr, 10, s[i]);
-			else if (s[i] == 'u')
-				ft_putnbr(arg_ptr, 10, s[i]);
-			else if (s[i] == 'x')
-				ft_putnbr(arg_ptr, 16, s[i]);
-			else if (s[i] == 'X')
-				ft_putnbr(arg_ptr, 16, s[i]);
-			else if (s[i] == '%')
-				write(1,"%", 1);
-			
+			total += ft_type(s[i], arg_ptr) - 2;
 		}
-		write(1, &s[i], 1);
+		else
+			write(1, &s[i], 1);
 		i++;
 	}
 	va_end(arg_ptr);
-	return (i - 2 + );
+	return (i + total);
 }
-int main() {
+/* int main() {
 	// Test du format %c
 	char caractere = 'A';
 	ft_printf(" %c \n", caractere);
@@ -86,4 +97,4 @@ int main() {
 	ft_printf(" %% \n");
 	printf(" %% \n\n");
 	return 0;
-}
+} */

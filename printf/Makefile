@@ -6,68 +6,52 @@
 #    By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 11:55:04 by cllopez-          #+#    #+#              #
-#    Updated: 2025/01/22 12:37:55 by cllopez-         ###   ########.fr        #
+#    Updated: 2025/01/30 11:50:12 by cllopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = libftprintf.a
+LIBFT = libft.a
+LIBFT_DIR = libft
 
-AR          = ar rcs
-CC          = cc
-CFLAGS      = -Wall -Werror -Wextra
-RM          = rm -rf
+MY_SOURCES =  ft_printf.c ft_character.c ft_putnbrbase.c ft_putnbr.c test.c
 
-INCLUDE     = includes
-SRC_DIR		= .
-LIBFT_SRC   = $(SRC_DIR)/libft
-UTILS_SRC  = $(SRC_DIR)/utils
-OBJ_DIR     = obj
+CC = cc # compiler
+CCFLAGS = -Wall -Wextra -Werror # flags for warnings and errors
+RM = rm -rf # command to remove files
+AR = ar rcs
 
-SRC_FILES   = $(wildcard $(LIBFT_SRC)/*.c) $(wildcard $(UTILS_SRC)/*.c)
-OBJ_FILES   = $(patsubst $(SRC_DIR)/%, $(OBJ_DIR)/%, $(SRC_FILES:.c=.o))
+# Object files corresponding to the source files
+OBJS = $(MY_SOURCES:.c=.o)
 
+%.o : %.c
+	$(CC) $(CCFLAGS) -c $< -o $@
 
-RED         = \033[1;31m
-GREEN       = \033[1;32m
-BLUE        = \033[1;34m
-YELLOW      = \033[1;33m
-RESET       = \033[0m
+all: $(NAME)
 
-all: ascii $(NAME)
+libft:
+	@echo "Compilando libft..."
+	$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(OBJ_FILES)
-	@echo "$(YELLOW)Compilacion $(NAME)...$(RESET)"
-	@$(AR) $(NAME) $(OBJ_FILES)
-	@echo "$(GREEN)$(NAME) creada con exito!$(RESET)"
+# Build the static library
+$(NAME): libft $(OBJS)
+	@echo "Copiando libft.a en libftprintf.a..."
+	cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
+	@echo "Agregando objetos de ft_printf a libftprintf.a..."
+	$(AR) $(NAME) $(OBJS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
-	@echo "$(BLUE)Compilation de $<...$(RESET)"
-	@$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
+test: test.o $(NAME)
+	$(CC) $(CCFLAGS) test.c $(NAME) $(LIBFT_DIR)/$(LIBFT) -o test
 
 clean:
-	@echo "$(RED)Supresion de archivos ...$(RESET)"
-	@$(RM) $(OBJ_DIR)
+	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	@echo "$(RED)Supresion de $(NAME)...$(RESET)"
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
-re: fclean all
+re:	fclean all # Clean and recompile everything
 
-
-
-ascii:
-	@clear
-	@printf "$(GREEN)"
-	@echo "  _ _ _      __ _"
-	@echo " | (_) |__  / _| |_"
-	@echo " | | | '_ \| |_| __|"
-	@echo " | | | |_) |  _| |_"
-	@echo " |_|_|_.__/|_|  \__|"
-	@echo "$(RED)by: CLAUDIKI"
-	@echo "$(RESET)\n"
-
-	
-.PHONY: all clean fclean re ascii 
+.PHONY: all clean fclean re libft
