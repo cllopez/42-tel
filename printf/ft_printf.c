@@ -6,7 +6,7 @@
 /*   By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:48:56 by cllopez-          #+#    #+#             */
-/*   Updated: 2025/01/30 11:48:39 by cllopez-         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:33:33 by cllopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,26 @@ int	ft_type(char c, va_list arg_ptr)
 		total += ft_character(arg_ptr);
 	else if (c == 's')
 		total += ft_string(arg_ptr);
+	else if (c == 'p')
+		total += ft_adress(arg_ptr);
 	else if (c == 'd' || c == 'i')
-		total += ft_putnbr(arg_ptr, 10, c);
+		total += ft_int(arg_ptr);
 	else if (c == 'u')
-		total += ft_putnbr(arg_ptr, 10, c);
-	else if (c == 'x')
-		total += ft_putnbr(arg_ptr, 16, c);
-	else if (c == 'X')
-		total += ft_putnbr(arg_ptr, 16, c);
+		total += ft_uint(arg_ptr);
+	else if (c == 'x' || c == 'X')
+		total += ft_hexbase(c, arg_ptr);
 	else if (c == '%')
-		total += write(1,"%%", 1);
+		total += write(1, "%%", 1);
 	return (total);
 }
 
 int	ft_printf(char const *s, ...)
 {
-	int	i;
-	int total;
-	va_list arg_ptr;
-	va_start(arg_ptr, s);
+	int		i;
+	int		total;
+	va_list	arg_ptr;
 
+	va_start(arg_ptr, s);
 	i = 0;
 	total = 0;
 	while (s[i])

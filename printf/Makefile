@@ -6,7 +6,7 @@
 #    By: cllopez- <cllopez-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 11:55:04 by cllopez-          #+#    #+#              #
-#    Updated: 2025/01/30 11:50:12 by cllopez-         ###   ########.fr        #
+#    Updated: 2025/01/30 14:13:59 by cllopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 LIBFT = libft.a
 LIBFT_DIR = libft
 
-MY_SOURCES =  ft_printf.c ft_character.c ft_putnbrbase.c ft_putnbr.c test.c
+MY_SOURCES =  ft_printf.c ft_strs.c ft_putnbr.c 
 
 CC = cc # compiler
 CCFLAGS = -Wall -Wextra -Werror # flags for warnings and errors
